@@ -1,0 +1,29 @@
+.popup__button-remove {
+  padding: 0;
+  margin: 0 auto 36px;
+  border: 0;
+  width: 100%;
+  max-width: calc(100% - (36px * 2));
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  min-height: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  text-align: center;
+  transition: opacity .3s ease;
+  cursor: pointer;
+}
+  
+.popup__button-remove:hover {
+  opacity: .8;
+}
+  
+@media screen and (max-width: 720px) {
+  .popup__button-remove {
+    font-size: 14px;
+    min-height: 46px;
+    max-width: calc(100% - (22px * 2));
+  }
+}
