@@ -1,41 +1,28 @@
-function PopupWithForm({ 
-  name, 
-  title,
-  isOpen,
-  onClose,
-  onSubmit,
-  children,
-  textButton
-}) {
+import React from 'react'
+import closeIcon from '../images/CloseIcon.svg'
 
+
+
+function PopupWithForm(props) {
   return (
-    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}>
-      <div className={"popup__container"}>
-        <button
-          className={"popup__button-close"}
-          type={"button"}
-          onClick={onClose}
-          aria-label="Закрыть форму">
+    <div className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_is-opened' : ''}`}>
+      <div className="popup__content">
+        <button type="button" className="popup__close" onClick={props.onClose}>
+          <img
+            src={closeIcon}
+            alt="кнопка закрытия попапа"
+          />
         </button>
-        <h2 className={"popup__title"}>
-          {title}</h2>
-        <form
-          className="popup__form"
-          name={name}
-          id={"popup-form-edit"}
-          onSubmit={onSubmit}
-        >
-          {children}
-          <button
-            className={"popup__button-submit"}
-            type={"submit"}
-          >
-            {textButton}
+        <form className={`popup__field-form popup__field-form-${props.name}`} onSubmit={props.onSubmit}>         
+          <h2 className="popup__heading">{props.title}</h2>
+          {props.children}
+          <button type="submit" className="popup__button" >
+            {props.buttonText}          
           </button>
         </form>
       </div>
     </div>
-  );
+  ); 
 }
 
-export default PopupWithForm;
+export default PopupWithForm

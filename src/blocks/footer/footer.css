@@ -1,18 +1,7 @@
 .footer {
-  flex-shrink: 0;
-  max-width: 880px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 0;
-  padding: 33px 0 60px 0;
 }
 
-@media screen and (max-width: 1024px) {
-  .footer {
-    padding: 24px 0 36px 27px;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .footer {
-    padding: 24px 19px 36px 19px;
-  }
-}
