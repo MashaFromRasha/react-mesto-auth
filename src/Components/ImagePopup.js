@@ -1,18 +1,16 @@
 import React from 'react'
-import closeIcon from '../images/CloseIcon.svg';
 
 function ImagePopup(props) {
   return(
-    <div className={`popup popup_type_image ${props.card.link ? 'popup_is-opened' : ''}`}>    
-      <div className="popup__content popup__content_content_image">
-        <button type="button" className="popup__close">
-          <img src={closeIcon} alt="Кнопка закрытия попапа" onClick={props.onClose} />
+    <section className={`popup ${props.card.link ? 'popup_is-opened' : ''}`}>    
+      <figure className="popup__figure">
+        <button type="button" className="popup__close" onClick={props.onClose}  aria-label="Кнопка закрытия попапа" >
         </button>
         <img className="popup__image" src={props.card.link} alt={props.card.name} />
-        <p className="popup__caption">{props.card.name}</p>
+        <figcaption className="popup__caption">{props.card.name}</figcaption>
 
-      </div>
-    </div>
+      </figure>
+    </section>
   ) 
 }
 

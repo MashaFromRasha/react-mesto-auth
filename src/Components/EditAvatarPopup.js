@@ -34,7 +34,6 @@ function EditAvatarPopup(props) {
         required
       />
       <span className="popup__input-error" id="field-input-avatar-error">
-        Введите ссылку.
       </span>
     </PopupWithForm>
   );

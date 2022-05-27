@@ -51,7 +51,6 @@ function AddPlacePopup(props) {
       onChange={handleChangeTitle}
     />
     <span className="popup__input-error" id="field-input-description-error">
-      Вы пропустили это поле.
     </span>
     <input
       className="popup__field-input popup__field-input-link"
@@ -65,7 +64,6 @@ function AddPlacePopup(props) {
       onChange={handleChangeLink}
     />
     <span className="popup__input-error" id="field-input-link-error">
-      Введите ссылку.
     </span>
   </PopupWithForm>
   )

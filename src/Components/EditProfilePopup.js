@@ -52,7 +52,6 @@ function EditProfilePopup(props){
         onChange={handleChangeName}
       />
       <span className="popup__input-error" id="field-input-name-error">
-        Вы пропустили это поле.
       </span>
       <input
         className="popup__field-input popup__field-input-about"
@@ -68,7 +67,6 @@ function EditProfilePopup(props){
         onChange={handleChangeDescription}
       />
       <span className="popup__input-error" id="field-input-about-error">
-        Вы пропустили это поле.
       </span>
     </PopupWithForm>
   );

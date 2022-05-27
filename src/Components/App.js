@@ -281,7 +281,7 @@ function App() {
           />
           <PopupWithDelete
             isOpen={isPopupWithDeleteOpen}
-            onclose={closeAllPopups}
+            onClose={closeAllPopups}
             onDeleteCardConfirm={handleDeleteCardConfirm}
             cardId={cardIdWithDelete}
           />
