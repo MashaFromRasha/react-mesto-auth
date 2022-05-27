@@ -1,6 +1,5 @@
 import SuccessIcon from "../images/SuccessIcon.svg";
 import FailIcon from "../images/FailIcon.svg";
-import closeIcon from "../images/CloseIcon.svg";
 import React from "react";
 
 function InfoToolTip(props) {
@@ -33,8 +32,7 @@ function InfoToolTip(props) {
           </>
         )}
 
-        <button type="button" className="popup__close" onClick={props.onClose}>
-          <img src={closeIcon} alt="кнопка закрытия попапа" />
+        <button type="button" className="popup__close" onClick={props.onClose} aria-label="Кнопка закрытия попапа">
         </button>
       </div>
     </div>
