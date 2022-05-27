@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Footer from "../components/Footer";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
 import AddPlacePopup from "./AddPlacePopup";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
-import ImagePopup from "../components/ImagePopup";
-import PopupWithDelete from "../components/PopupWithDelete";
+import ImagePopup from "./ImagePopup";
+import PopupWithDelete from "./PopupWithDelete";
 
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
