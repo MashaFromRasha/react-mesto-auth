@@ -3,10 +3,11 @@
   text-decoration: none;
   font-size: 18px;
   line-height: 22px;
-  text-align: right;  
+  text-align: right;
+  transition: opacity .3s ease;
+  cursor: pointer;
 }
 
 .header__link:hover {
-  cursor: pointer;
   opacity: 0.6;
 }
