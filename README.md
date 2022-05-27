@@ -8,7 +8,11 @@
 
 ## Функционал:
 
-* Фотографии и данные пользователя загружаются с сервера
+*Авторизация и регистрация пользователей
+*Добавление и удаление фотографии
+*"Лайк" для фотографии
+*Редактирование профиля пользователя
+*Данные хранятся на сервере и загружаются с сервера
 
 ## Языки:
 
@@ -37,7 +41,6 @@
 
 * live валидации форм;
 * создание индикаторов загрузки запросов;
-* создание всплывающего подтверждения удаления карточек с фотографиями;
 
 ## Макеты проектной работы в Figma:
 
@@ -56,3 +59,4 @@
 * [Чеклист 9](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-9/index.html)
 * [Чеклист 10](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-10/index.html)
 * [Чеклист 11](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-11/index.html)
+* [Чеклист 11](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-12/index.html)

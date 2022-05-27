@@ -2,5 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  max-width: 880px;
+  padding: 45px 0 40px 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    margin: 0 27px;
+    padding: 28px 0 31.6px 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    padding: 28px 27px 31.6px 27px;
+    margin: 0;
+  }
 }

@@ -10,13 +10,13 @@ function PopupWithForm(props) {
         <button type="button" className="popup__close" onClick={props.onClose}>
           <img
             src={closeIcon}
-            alt="кнопка закрытия попапа"
+            alt="Кнопка закрытия попапа"
           />
         </button>
         <form className={`popup__field-form popup__field-form-${props.name}`} onSubmit={props.onSubmit}>         
           <h2 className="popup__heading">{props.title}</h2>
           {props.children}
-          <button type="submit" className="popup__button" >
+          <button type="submit" className="popup__button" alt="Кнопка отправки формы">
             {props.buttonText}          
           </button>
         </form>

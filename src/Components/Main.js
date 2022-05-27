@@ -8,11 +8,11 @@ function Main(props) {
 
   return (
 
-    <div className="page__container">
+    <div>
       {props.isLoading && (<Loader />)}
 
-      <section className={`profile page__profile ${props.isLoading && "page__profile_hidden"}`}>
-        <div className="profile__container">
+      <section className={`profile  ${props.isLoading && "page__profile_hidden"}`}>
+       
           <div className="profile__avatar-block">
             <img
               className="profile__avatar"
@@ -29,31 +29,32 @@ function Main(props) {
             <div className="profile__edit-block">
               <h1 className="profile__title">{currentUser.name}</h1>
               <button
+                className="profile__edit-button"
                 type="button"
                 id="show-popup"
-                className="profile__edit-button"
                 aria-label="кнопка редактирования"
                 onClick={props.onEditProfile}
               />
             </div>
             <p className="profile__subtitle">{currentUser.about}</p>
           </div>
-        </div>
+
 
         <button
           className="profile__button"
-          type="submit"
           id="show-card-popup"
+          type="submit"
+          aria-label="кнопка отправки формы"
           onClick={props.onAddPlace}
         />
       </section>
 
-      <section className="elements page__elements">
-        <ul className="elements__list">
+      <section className="photos">
+       
           {props.cards.map((card) => (            
              <Card card={card} key={card._id} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete} />
             ))}
-        </ul>
+       
       </section>
     </div>
     

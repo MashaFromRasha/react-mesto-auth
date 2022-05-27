@@ -1,21 +1,21 @@
 import React from "react"
-import PopupWithForm from "./PopupWithForm"
+import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup(props) {
-  const [title, setTitle] = React.useState('')
-  const [link, setLink] = React.useState('')
+  const [title, setTitle] = React.useState('');
+  const [link, setLink] = React.useState('');
 
   
   function handleChangeTitle(e) {
-    setTitle(e.target.value)
+    setTitle(e.target.value);
   }
 
   function handleChangeLink(e) {
-    setLink(e.target.value)
+    setLink(e.target.value);
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     props.onAddCard({
       name: title,
@@ -26,7 +26,7 @@ function AddPlacePopup(props) {
   React.useEffect(() => {
     setTitle('')
     setLink('')
-  }, [props.isOpen])
+  }, [props.isOpen]);
 
 
   return(

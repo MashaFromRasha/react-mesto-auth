@@ -1,0 +1,10 @@
+.card {
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  max-width: 282px;
+  width: 100%;
+  overflow: hidden;
+  justify-self: center;
+}

@@ -1,25 +1,26 @@
 .profile__edit-button {
-  background-color: black;
-  margin: 0 0 0 18px;
-  padding: 0;
-  box-sizing: border-box;
-  width: 24px;
+  max-width: 24px;
   height: 24px;
-  background: url(../../../images/EditButton.svg) no-repeat center;
-  background-size: 10px 10px;
-  border: 1px solid #FFFFFF;
-  outline: none;
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  margin: 6px 0 0;
+  background-image: url('../../../images/EditButton.svg');
+  border: 1px solid #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
+  transition: opacity .3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+  }
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
-}
-
-@media screen and (max-width: 320px) {
-  .profile__edit-button {
-    width: 18px;
-    height: 18px;
-    margin: 0 0 0 10px;
-  }
 }

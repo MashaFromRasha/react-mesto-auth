@@ -1,7 +1,11 @@
 .profile__edit-block {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  box-sizing: border-box;  
+  align-items: center;
 }
 
+
+@media screen and (max-width: 720px) {
+  .profile__edit-block {
+    justify-content: center;
+  }
+}
