@@ -16,8 +16,7 @@ function Login(props) {
     props.onLogin(email, password);
   }
 
-  return (
-    <>      
+  return (     
       <section className="auth">
         <h2 className="auth__title">Вход</h2>
         <form className="auth__form" onSubmit={handleSubmit}>
@@ -47,7 +46,6 @@ function Login(props) {
           </button>
         </form>
       </section>
-    </>
   );
 }
 

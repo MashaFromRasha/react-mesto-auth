@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function ImagePopup(props) {
   return(
-    <section className={`popup ${props.card.link ? 'popup_is-opened' : ''}`}>    
+    <section className={`popup ${props.card.link && 'popup_is-opened'}`}>    
       <figure className="popup__figure">
         <button type="button" className="popup__close" onClick={props.onClose}  aria-label="Кнопка закрытия попапа" >
         </button>

@@ -5,7 +5,7 @@ import React from "react";
 function InfoToolTip(props) {
   return (
     <div
-      className={`popup popup_type_tooltip ${props.isOpen ? "popup_is-opened" : ""}`}
+      className={`popup popup_type_tooltip ${props.isOpen && "popup_is-opened"}`}
     >
       <div className="popup__content">
         {props.isSuccess ? (
