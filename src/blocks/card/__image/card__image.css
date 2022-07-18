@@ -1,8 +1,5 @@
 .card__image {
-  display: block;
-  width: 282px;
   height: 282px;
+  width: 282px;
   object-fit: cover;
-  cursor: pointer;
-  background-color: #C4C4C4;
 }

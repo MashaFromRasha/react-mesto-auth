@@ -1,0 +1,39 @@
+.login {
+    margin: 0 auto;
+    max-width: 880px;
+    margin-top: 60px;
+}
+
+.login__title {
+    text-align: center;
+}
+
+.login__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login__input {
+    background-color: black;
+    color: white;
+    border: none;
+    border-bottom: 2px solid #CCCCCC;
+    min-height: 30px;
+    width: 358px;
+}
+
+.login__input:first-child {
+    margin-bottom: 30px;
+}
+
+.login__button {
+    margin-top: 216px;
+    padding: 14px 0 14px 0;
+    border-radius: 2px;
+}

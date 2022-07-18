@@ -1,63 +1,61 @@
 import React from "react";
 import Card from "./Card";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import Loader from "./Loader";
-
-function Main(props) {
-  const currentUser = React.useContext(CurrentUserContext);
-
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CardsContext } from "../context/CardsContext";
+function Main({
+  onAddPlace,
+  onCardClick,
+  onEditProfile,
+  onEditAvatar,
+  setCards,
+  onCardLike,
+  onCardDelete,
+}) {
+  const cards = React.useContext(CardsContext);
+  const userContext = React.useContext(CurrentUserContext);
   return (
-
-    <div>
-      {props.isLoading && (<Loader />)}
-
-      <section className={`profile  ${props.isLoading && "page__profile_hidden"}`}>
-       
-          <div className="profile__avatar-block">
+    <main>
+      <section className="profile">
+        <div className="profile__container">
+          <div className="profile__image-wrapper">
             <img
-              className="profile__avatar"
-              src={currentUser.avatar}
-              alt="аватар пользователя"
-            />
-            <button
-              className="profile__avatar-button"
-              onClick={props.onEditAvatar}
+              className="profile__image"
+              src={userContext.avatar}
+              alt={userContext.name}
+              onClick={onEditAvatar}
             />
           </div>
-
-          <div className="profile__info-block">
-            <div className="profile__edit-block">
-              <h1 className="profile__title">{currentUser.name}</h1>
+          <div className="profile__intro">
+            <div className="profile__box">
+              <h1 className="profile__title">{userContext.name}</h1>
               <button
-                className="profile__edit-button"
+                className="profile__botton-edit"
                 type="button"
-                id="show-popup"
-                aria-label="кнопка редактирования"
-                onClick={props.onEditProfile}
-              />
+                onClick={onEditProfile}
+              ></button>
             </div>
-            <p className="profile__subtitle">{currentUser.about}</p>
+            <p className="profile__subtitle">{userContext.about}</p>
           </div>
-
-
+        </div>
         <button
-          className="profile__button"
-          id="show-card-popup"
-          type="submit"
-          aria-label="кнопка отправки формы"
-          onClick={props.onAddPlace}
-        />
+          className="profile__button-full"
+          type="button"
+          onClick={onAddPlace}
+        ></button>
       </section>
-
-      <section className="photos">
-       
-          {props.cards.map((card) => (            
-             <Card card={card} key={card._id} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete} />
-            ))}
-       
+      <section className="cards">
+        {cards.map((card) => (
+          <Card
+            userContext={userContext}
+            onCardDelete={onCardDelete}
+            onCardLike={onCardLike}
+            card={card}
+            key={card._id}
+            onCardClick={onCardClick}
+          />
+        ))}
       </section>
-    </div>
-    
+    </main>
   );
 }
 

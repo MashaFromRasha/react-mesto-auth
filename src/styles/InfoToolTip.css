@@ -1,0 +1,14 @@
+.margin {
+    margin: 10px;
+    width: 358px;
+    text-align: center;
+}
+
+.info__image {
+    width: 120px;
+    height: 120px;
+}
+
+.info__container {
+    align-items: center;
+}

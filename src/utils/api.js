@@ -1,125 +1,90 @@
-class Api {
-  constructor({ address, token }) {
-    this._address = address;
-    this._token = token;
+export class Api {
+  constructor({
+    baseUrl,
+    headers
+  }) {
+    this.baseUrl = baseUrl;
+    this.headers = headers;
   }
 
+  _makeRequest(path, method, body) {
+    return fetch(this.baseUrl + path, {
+      method: method || "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        "Content-Type": "application/json",
+      },
+      ...body,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
 
-  _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка ${res.status}`);
+      return Promise.reject(res.status);
+    });
   }
 
+  getProfile() {
+    return this._makeRequest("/users/me");
+  }
 
   getInitialCards() {
-    return fetch(`${this._address}/cards`, {
-      headers: {
-        authorization: this._token,
-      },
-    }).then(this._checkResponse);
+    return this._makeRequest("/cards");
   }
-
-
-  getUserData() {
-    return fetch(`${this._address}/users/me`, {
-      headers: {
-        authorization: this._token,
-      },
-    }).then(this._checkResponse);
-  }
-
-
-  setUserData({ name, about, avatar }) {
-    return fetch(`${this._address}/users/me`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        about,
-        avatar,
-      }),
-    }).then(this._checkResponse);
-  }
-
-  
-  updateAvatar(data) {
-    return fetch(`${this._address}/users/me/avatar`, {
-      method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        avatar: data.avatar,
-      }),
-    }).then(this._checkResponse);
-  }
-
-
-  createCard({ name, link }) {
-    return fetch(`${this._address}/cards`, {
-      method: "POST",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        link,
-        name,
-      }),
-    }).then(this._checkResponse);
-  }
-
-
-  deleteCard(id) {
-    return fetch(`${this._address}/cards/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
-    }).then(this._checkResponse);
-  }
-
-
-  addLike(id) {
-    return fetch(`${this._address}/cards/likes/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-    }).then(this._checkResponse);
-  }
-
-
-  deleteLike(id) {
-    return fetch(`${this._address}/cards/likes/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
-    }).then(this._checkResponse);
-  }
-
 
   changeLikeCardStatus(id, isLiked) {
-    if(!isLiked) {
-      return this.deleteLike(id);
+    if (isLiked) {
+      return this.addLike(id)
     } else {
-      return this.addLike(id);
+      return this.deleteLike(id)
     }
+  }
+
+  editProfile(name, about) {
+    return this._makeRequest("/users/me", "PATCH", {
+      body: JSON.stringify({
+        name: name,
+        about: about,
+      }),
+    });
+  }
+
+  deleteLike(id) {
+    return this._makeRequest(`/cards/${id}/likes`, "DELETE");
+  }
+
+  addLike(id) {
+    return this._makeRequest(`/cards/${id}/likes`, "PUT");
+  }
+
+  addCard(name, link) {
+    return this._makeRequest("/cards", "POST", {
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
+    });
+  }
+
+  deleteCard(id) {
+    return this._makeRequest(`/cards/${id}`, "DELETE");
+  }
+
+  resetAvatar(avatarPhoto) {
+    return this._makeRequest("/users/me/avatar", "PATCH", {
+      body: JSON.stringify({
+        avatar: avatarPhoto,
+      }),
+    });
   }
 }
 
-
 const api = new Api({
-  address: "https://mesto.nomoreparties.co/v1/cohort-39",
-  token: "65df588a-f3b5-4198-8939-b069c90bb6b0",
+  baseUrl: "https://api.murochkina.students.nomoredomains.xyz",
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    "Content-Type": "application/json",
+  },
 });
 
 export default api;

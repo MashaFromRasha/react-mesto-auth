@@ -1,42 +1,19 @@
-import SuccessIcon from "../images/SuccessIcon.svg";
-import FailIcon from "../images/FailIcon.svg";
-import React from "react";
+import StatusNoValid from '../image/StatusNoValid.svg'
+import StatusValid from '../image/StatusValid.svg'
 
-function InfoToolTip(props) {
+import '../styles/InfoToolTip.css'
+function InfoToolTip({ isOpen, onClose, config }) {
   return (
-    <div
-      className={`popup popup_type_tooltip ${props.isOpen && "popup_is-opened"}`}
-    >
-      <div className="popup__content">
-        {props.isSuccess ? (
-          <>
-            <img
-              src={`${SuccessIcon}`}
-              alt="Регистрация прошла успешно."
-              className="popup__tooltip_image"
-            />
-            <p className="popup__tooltip_message">
-              Вы успешно зарегистрировались!
-            </p>
-          </>
-        ) : (
-          <>
-            <img
-              src={`${FailIcon}`}
-              alt="Регистрация не была выполнена."
-              className="popup__tooltip_image"
-            />
-            <p className="popup__tooltip_message">
-              Что-то пошло не так. Попробуйте ещё раз!
-            </p>
-          </>
-        )}
-
-        <button type="button" className="popup__close" onClick={props.onClose} aria-label="Кнопка закрытия попапа">
-        </button>
+    <>
+      <div className={`popup popup-info ${isOpen ? 'popup__open' : ''}`}>
+        <div className="popup__container info__container">
+          <img className='info__image' alt={config.status ? "Успешная регистрация!" : "Что-то пошло не так!"} src={config.status ? StatusValid : StatusNoValid}></img>
+          <h2 className="popup__title margin">{config.messageText}</h2>
+          <button onClick={onClose} className="popup__botton-close"></button>
+        </div>
       </div>
-    </div>
-  );
+    </>
+  )
 }
 
 export default InfoToolTip;

@@ -1,53 +1,53 @@
-const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = 'https://api.murochkina.students.nomoredomains.xyz';
 
-function checkResponse(res) {
+const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
-  return Promise.reject(`${res.status}`);
-}
+
+  return res.json()
+    .then((data) => {
+      throw new Error(data.message);
+    });
+};
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       email: email,
-      password: password,
-    }),
+      password: password
+    })
   })
     .then(checkResponse);
 };
 
 export const login = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       email: email,
-      password: password,
-    }),
+      password: password
+    })
   })
-    .then(checkResponse)
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-        return data;
-      }
-    })  
+    .then(checkResponse);
 };
 
-export const checkToken = (jwt) => {
+export const token = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     },
   })
     .then(checkResponse);

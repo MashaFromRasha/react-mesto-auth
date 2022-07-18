@@ -1,51 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 
+import "../styles/Login.css";
 function Login(props) {
-  const [email, setEmail] = React.useState("");
-  const [password, setpassword] = React.useState("");
+  const [formParams, setFormParams] = useState({
+    email: "",
+    password: "",
+  });
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-  function handlePasswordChange(e) {
-    setpassword(e.target.value);
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormParams((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
-  function handleSubmit(e) {
+  function handleSumbit(e) {
     e.preventDefault();
-    props.onLogin(email, password);
+    if (!formParams.email || !formParams.password){
+        return;
+      }
+      props.handleLogin({ email: formParams.email, password: formParams.password })
   }
 
-  return (     
-      <section className="auth">
-        <h2 className="auth__title">Вход</h2>
-        <form className="auth__form" onSubmit={handleSubmit}>
+  return (
+    <div className="login">
+      <h2 className="login__title">Вход</h2>
+      <div className="login__container">
+        <form onSubmit={handleSumbit} className="login__form">
           <input
-            onChange={handleEmailChange}
-            className="auth__form-input"
-            placeholder="Email"
-            name="email"
+            className="login__input"
+            id="email"
             type="email"
-            required
-            value={email || ""}
-            autoComplete="off"
-          ></input>
+            name="email"
+            placeholder="E-mail"
+            onChange={handleChange}
+            value={formParams.email}
+          />
           <input
-            onChange={handlePasswordChange}
-            className="auth__form-input"
-            placeholder="Пароль"
-            name="password"
+            className="login__input"
+            id="password"
             type="password"
-            required
-            value={password || ""}
-            autoComplete="off"
-          ></input>
-
-          <button className="auth__form-submit-btn" type="submit">
+            name="password"
+            placeholder="Пароль"
+            onChange={handleChange}
+            value={formParams.password}
+          />
+          <button type="submit" className="login__button">
             Войти
           </button>
         </form>
-      </section>
+      </div>
+    </div>
   );
 }
 

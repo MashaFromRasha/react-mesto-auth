@@ -1,0 +1,23 @@
+.profile__button-full {
+  width: 150px;
+  height: 50px;
+  padding: 0;
+  background-image: url(../../../image/ButtonOpenPopupAdd.svg);
+  border: 0;
+  background-color: black;
+  background-size: cover;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__button-full {
+    width: 282px;
+    height: 50px;
+    background-image: url(../../../image/ButtonOpenPopupAddMobile.svg);
+  }
+}
+
+.profile__button-full:hover {
+  opacity: 0.6;
+}

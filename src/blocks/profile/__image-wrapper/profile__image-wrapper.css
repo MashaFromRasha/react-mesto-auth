@@ -1,0 +1,23 @@
+.profile__image-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__image-wrapper::before {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.8) url(../../../image/AvatarHover.svg) no-repeat 50%/26px 26px;
+  border-radius: inherit;
+  content: "";
+  top: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.profile__image-wrapper:hover:before {
+  opacity: 1;
+}

@@ -1,0 +1,17 @@
+.card__button-card-detele {
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  position: absolute;
+  background-image: url(../../../image/TrashButton.svg);
+  background-size: cover;
+  border: 0;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__button-card-detele-hidden {
+  display: none;
+}

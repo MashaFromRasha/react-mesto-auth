@@ -1,72 +1,72 @@
-import React from "react"
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup(props) {
-  const [title, setTitle] = React.useState('');
-  const [link, setLink] = React.useState('');
+function AddPlacePopup({ onClose, isOpen, onAddCard }) {
 
-  
-  function handleChangeTitle(e) {
-    setTitle(e.target.value);
-  }
+  const [link, setLink] = React.useState("");
+  const [title, setTitle] = React.useState("");
 
   function handleChangeLink(e) {
     setLink(e.target.value);
   }
 
+  function handleChangeTitle(e) {
+    setTitle(e.target.value);
+  }
+
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    props.onAddCard({
-      name: title,
-      link: link
+    onAddCard({
+      link: link,
+      title: title,
     });
   }
 
   React.useEffect(() => {
-    setTitle('')
-    setLink('')
-  }, [props.isOpen]);
+    setLink('');
+    setTitle('');
+  }, [isOpen]);
 
-
-  return(
+  return (
     <PopupWithForm
-    name="card"
-    title="Новое место"
-    buttonText="Создать"
-    isOpen={props.isOpen}
-    onClose={props.onClose}
-    onSubmit={handleSubmit}
-    isDataLoading={props.isDataLoading}
-  >
-    <input
-      className="popup__field-input popup__field-input-description"
-      name="name"
-      type="text"
-      autoComplete="off"
-      id="field-input-description"
-      placeholder="Название"
-      required
-      value={title || ''}
-      onChange={handleChangeTitle}
+      name="-image"
+      title="Новое место"
+      button="Сохранить"
+      onSubmit={handleSubmit}
+      isOpen={isOpen}
+      onClose={onClose}
+      children={
+        <>
+          <input
+            autoFocus
+            className="popup__input-name"
+            id="card-name-input"
+            name="text"
+            type="text"
+            placeholder="Название"
+            minLength="2"
+            maxLength="30"
+            onChange={handleChangeTitle}
+            value={title || ''}
+            required
+          />
+          <span className="popup__input-error card-name-input-error"></span>
+          <input
+            className="popup__input-name popup__input-name_type_user-job"
+            id="url-input"
+            name="link"
+            type="url"
+            placeholder="Ссылка на картинку"
+            onChange={handleChangeLink}
+            value={link || ''}
+            required
+          />
+          <span className="popup__input-error url-input-error"></span>
+        </>
+      }
     />
-    <span className="popup__input-error" id="field-input-description-error">
-    </span>
-    <input
-      className="popup__field-input popup__field-input-link"
-      type="url"
-      name="link"
-      autoComplete="off"
-      id="field-input-link"
-      placeholder="Ссылка на картинку"
-      required
-      value={link || ''}
-      onChange={handleChangeLink}
-    />
-    <span className="popup__input-error" id="field-input-link-error">
-    </span>
-  </PopupWithForm>
-  )
+  );
 }
-
-export default AddPlacePopup
+export default AddPlacePopup;

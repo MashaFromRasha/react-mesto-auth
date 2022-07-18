@@ -1,0 +1,15 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu__email {
+    margin-right: 20px;
+}
+
+.menu__button {
+    border: none;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
